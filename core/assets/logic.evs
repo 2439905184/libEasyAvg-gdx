@@ -1,0 +1,2 @@
+var char_main = new EvCharacter()
+show char_main at center
