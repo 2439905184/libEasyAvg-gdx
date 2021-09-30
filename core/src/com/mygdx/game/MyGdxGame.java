@@ -10,7 +10,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.easyAvg.Editor;
 
 public class MyGdxGame extends ApplicationAdapter {
@@ -21,10 +24,26 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		//Skin skin = new Skin(Gdx.files.internal("metalui/metal-ui.json"));
 		img = new Texture("010.jpg");
-		stage = new Stage();
-		Editor editor = new Editor();
-		//Actor actor = new Actor(img);
+		stage =  new Stage(new ScreenViewport());
+		Button textButton = new Button();
+		/*SDK.init(new testListener() {
+			@Override
+			public void onSuccess(String a)
+			{
+				System.out.println(a);
+			}
+
+			@Override
+            public void onFailed() {
+                System.out.println("failed");
+            }
+        });*/
+		//textButton.setWidth(20f);
+		//stage.addActor(textButton);
+		//Editor editor = new Editor();
+		//Actor actor =
 		//actor.setName("aaaa");
 		//stage.addActor(actor);
 		//editor.create_project_view();
