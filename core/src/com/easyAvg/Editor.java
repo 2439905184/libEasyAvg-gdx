@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -21,15 +23,15 @@ public class Editor
 {
     Texture up;
     //启动的工程管理界面
-    public void create_project_view(Stage stage, BitmapFont font)
+    public void create_project_view(Stage stage, BitmapFont font, SpriteBatch spriteBatch)
     {
         Label.LabelStyle style = new Label.LabelStyle(font,font.getColor());
         Label title = new Label("Projet Manager",style);
         title.setX(Gdx.graphics.getWidth()/2);
         title.setY(500);
         stage.addActor(title);
-        up = new Texture("white.png");
-        TextureRegion reg = new TextureRegion(up);
+        Texture texture_up = new Texture("white.png");
+        TextureRegion reg = new TextureRegion(texture_up);
         reg.setRegion(0,0,100,50);
         TextureRegionDrawable drawable = new TextureRegionDrawable(reg);
         Drawable up = drawable.tint(Color.BROWN);
@@ -39,6 +41,11 @@ public class Editor
         btn_edit.setX(700);
         btn_edit.setY(300);
         stage.addActor(btn_edit);
+
+        spriteBatch.begin();
+
+        spriteBatch.end();
+       // stage.addActor(new ColorRect());
     }
     public void create_main_view(Stage stage,BitmapFont font)
     {

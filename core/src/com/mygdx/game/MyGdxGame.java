@@ -2,10 +2,13 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
@@ -15,11 +18,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.easyAvg.Editor;
 
 public class MyGdxGame extends ApplicationAdapter {
+	//像素纹理
 	SpriteBatch batch;
 	Texture img;
-
+	Sprite sprite;
 	OrthographicCamera cam;
 	Stage stage;
+	private Texture pixel_texture;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -29,11 +35,17 @@ public class MyGdxGame extends ApplicationAdapter {
 		//img = new Texture("badlogic.jpg");
 		Editor editor = new Editor();
 		Gdx.input.setInputProcessor(stage);
-		editor.create_project_view(stage,pixel_font);
+		editor.create_project_view(stage,pixel_font,batch);
 		//editor.create_main_view(stage,chinese_font);
 		cam = new OrthographicCamera();
 		//cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		//cam.update();
+		//创建像素图
+		Pixmap pixmap = new Pixmap(400,300, Pixmap.Format.RGBA8888);
+		pixmap.setColor(Color.GRAY);
+		pixmap.fill();
+		pixel_texture = new Texture(pixmap);
+		pixmap.dispose();
 	}
 	public BitmapFont create_font(String type)
 	{
@@ -66,6 +78,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.begin();
 		stage.act();
 		stage.draw();
+		batch.draw(pixel_texture,0,0);
 		//batch.draw(img, 100, 100);
 		//font.draw(batch,"Hello world 死角的数据",100,100);
 		batch.end();
