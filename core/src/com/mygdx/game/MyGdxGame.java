@@ -30,7 +30,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		Editor editor = new Editor();
 		Gdx.input.setInputProcessor(stage);
 		editor.create_project_view(stage,pixel_font);
-		editor.create_main_view(stage,chinese_font);
+		//editor.create_main_view(stage,chinese_font);
 		cam = new OrthographicCamera();
 		//cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		//cam.update();
@@ -78,7 +78,6 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 	@Override
 	public void resize (int width, int height) {
