@@ -25,18 +25,17 @@ public class MyGdxGame extends ApplicationAdapter {
 	OrthographicCamera cam;
 	Stage stage;
 	private Texture pixel_texture;
-
+	public static BitmapFont pixel_font;
+	public static BitmapFont chinese_font;
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		stage = new Stage();
-		BitmapFont pixel_font = create_font("pixel");
-		BitmapFont chinese_font = create_font("Chinese");
-		//img = new Texture("badlogic.jpg");
-		Editor editor = new Editor();
+		pixel_font = create_font("pixel");
+		chinese_font = create_font("Chinese");
+		Editor editor = new Editor(stage);
 		Gdx.input.setInputProcessor(stage);
-		editor.create_project_view(stage,pixel_font,batch);
-		//editor.create_main_view(stage,chinese_font);
+		editor.create_project_view(stage,pixel_font);
 		cam = new OrthographicCamera();
 		//cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		//cam.update();
@@ -63,7 +62,7 @@ public class MyGdxGame extends ApplicationAdapter {
 			FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("pht.otf"));
 			FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 			parameter.size = 35;
-			parameter.characters = FreeTypeFontGenerator.DEFAULT_CHARS + "按钮组";
+			parameter.characters = FreeTypeFontGenerator.DEFAULT_CHARS + "按钮组打开文件";
 			font = generator.generateFont(parameter);
 			generator.dispose();
 		}
@@ -78,7 +77,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		batch.begin();
 		stage.act();
 		stage.draw();
-		batch.draw(pixel_texture,0,0);
+		//batch.draw(pixel_texture,0,0);
 		//batch.draw(img, 100, 100);
 		//font.draw(batch,"Hello world 死角的数据",100,100);
 		batch.end();
