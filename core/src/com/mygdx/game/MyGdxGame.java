@@ -28,7 +28,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		BitmapFont chinese_font = create_font("Chinese");
 		//img = new Texture("badlogic.jpg");
 		Editor editor = new Editor();
-		//Gdx.input.setInputProcessor(stage);
+		Gdx.input.setInputProcessor(stage);
 		editor.create_project_view(stage,pixel_font);
 		editor.create_main_view(stage,chinese_font);
 		cam = new OrthographicCamera();
