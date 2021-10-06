@@ -110,18 +110,20 @@ public class Editor
             public void clicked(InputEvent event, float x, float y)
             {
                 Pixmap pixel = new Pixmap(200,200, Pixmap.Format.RGBA8888);
+                pixel.setColor(Color.GOLD);
+                pixel.fill();
                 Texture texture = new Texture(pixel);
                 TextureRegionDrawable background = new TextureRegionDrawable(texture);
                 Window.WindowStyle style = new Window.WindowStyle(MyGdxGame.chinese_font,Color.BROWN,background);
                 Window window = new Window("打开文件",style);
-                window.setPosition(400,300, Align.center);
+                window.setPosition(400,300);
                 stage.addActor(window);
               //  dialog.setModal(true);
 //                new TextureRegionDrawable(new Texture(""));
                 TextField.TextFieldStyle tfs = new TextField.TextFieldStyle(MyGdxGame.chinese_font,Color.WHITE,Resource.cursor,null,background);
 
                 TextField tf = new TextField("test",tfs);
-                window.add(tf);
+                window.addActor(tf);
                 window.setColor(Color.BLUE);
             }
         });

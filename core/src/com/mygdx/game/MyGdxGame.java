@@ -15,6 +15,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeType;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.easyAvg.Editor;
 import com.easyAvg.Resource;
 
@@ -44,11 +46,31 @@ public class MyGdxGame extends ApplicationAdapter {
 		cam = new OrthographicCamera();
 		//cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		//cam.update();
-		//创建像素图
-		Pixmap pixmap = new Pixmap(400,300, Pixmap.Format.RGBA8888);
-		pixmap.setColor(Color.GRAY);
+		TextField.TextFieldStyle style = new TextField.TextFieldStyle(pixel_font,Color.BLUE,Resource.cursor,Resource.cursor,null);
+		TextField textField = new TextField("aaaa",style);
+		textField.setWidth(100);
+		textField.setHeight(50);
+		//先后设置样式
+		Pixmap pixmap = new Pixmap(100, 100, Pixmap.Format.RGBA8888);
+		pixmap.setColor(Color.ORANGE);
 		pixmap.fill();
-		pixel_texture = new Texture(pixmap);
+		Texture texture = new Texture(pixmap);
+		style.background = new TextureRegionDrawable(texture);
+
+		pixmap = new Pixmap(1, 100, Pixmap.Format.RGBA8888);
+		pixmap.setColor(1, 0, 0, 1);
+		pixmap.fill();
+		texture = new Texture(pixmap);
+		style.cursor =  new TextureRegionDrawable(texture);
+
+		pixmap = new Pixmap(10, 10, Pixmap.Format.RGBA8888);
+		pixmap.setColor(Color.BLACK);
+		pixmap.fill();
+		texture = new Texture(pixmap);
+
+		style.selection = new TextureRegionDrawable(texture);
+
+		stage.addActor(textField);
 		pixmap.dispose();
 	}
 	public BitmapFont create_font(String type)
@@ -83,8 +105,6 @@ public class MyGdxGame extends ApplicationAdapter {
 		stage.act();
 		stage.draw();
 		//batch.draw(pixel_texture,0,0);
-		//batch.draw(img, 100, 100);
-		//font.draw(batch,"Hello world 死角的数据",100,100);
 		batch.end();
 
 	}
