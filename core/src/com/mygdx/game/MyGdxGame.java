@@ -4,12 +4,15 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -27,19 +30,11 @@ public class MyGdxGame extends ApplicationAdapter {
 		//Skin skin = new Skin(Gdx.files.internal("metalui/metal-ui.json"));
 		img = new Texture("010.jpg");
 		stage =  new Stage(new ScreenViewport());
-		Button textButton = new Button();
-		/*SDK.init(new testListener() {
-			@Override
-			public void onSuccess(String a)
-			{
-				System.out.println(a);
-			}
-
-			@Override
-            public void onFailed() {
-                System.out.println("failed");
-            }
-        });*/
+		BitmapFont font = new BitmapFont(Gdx.files.internal("c64.fnt"));
+		Label.LabelStyle style = new Label.LabelStyle(font,Color.BLACK);
+		Label label = new Label("hello world", style);
+		label.setColor(Color.GREEN);
+		stage.addActor(label);
 		//textButton.setWidth(20f);
 		//stage.addActor(textButton);
 		//Editor editor = new Editor();
