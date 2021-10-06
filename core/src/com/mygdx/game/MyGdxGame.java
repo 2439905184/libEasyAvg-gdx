@@ -16,6 +16,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.easyAvg.Editor;
+import com.easyAvg.Resource;
 
 public class MyGdxGame extends ApplicationAdapter {
 	//像素纹理
@@ -27,6 +28,10 @@ public class MyGdxGame extends ApplicationAdapter {
 	private Texture pixel_texture;
 	public static BitmapFont pixel_font;
 	public static BitmapFont chinese_font;
+	public void preload_resource()
+	{
+		new Resource();
+	}
 	@Override
 	public void create () {
 		batch = new SpriteBatch();

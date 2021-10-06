@@ -97,7 +97,13 @@ public class Editor
     private void create_menu_bar()
     {
         TextButton file = new TextButton("File",pixel_buttonStyle);
+        TextButton run = new TextButton("Run",pixel_buttonStyle);
+        TextButton build = new TextButton("Build",pixel_buttonStyle);
+        TextButton about = new TextButton("About",pixel_buttonStyle);
         file.setY(500);
+        run.setPosition(50,500);
+        build.setPosition(100,500);
+        about.setPosition(200,500);
         file.addListener(new ClickListener()
         {
             @Override
@@ -111,15 +117,25 @@ public class Editor
                 window.setPosition(400,300, Align.center);
                 stage.addActor(window);
               //  dialog.setModal(true);
-                TextField.TextFieldStyle tfs = new TextField.TextFieldStyle(MyGdxGame.chinese_font,Color.WHITE,null,null,background);
+//                new TextureRegionDrawable(new Texture(""));
+                TextField.TextFieldStyle tfs = new TextField.TextFieldStyle(MyGdxGame.chinese_font,Color.WHITE,Resource.cursor,null,background);
 
                 TextField tf = new TextField("test",tfs);
                 window.add(tf);
                 window.setColor(Color.BLUE);
             }
         });
-
+        about.addListener(new ClickListener()
+        {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                Gdx.net.openURI("https://gitee.com/h128/libEasyAvg-gdx");
+            }
+        });
         stage.addActor(file);
+        stage.addActor(run);
+        stage.addActor(build);
+        stage.addActor(about);
 
     }
     class projectBtnListener extends ClickListener
